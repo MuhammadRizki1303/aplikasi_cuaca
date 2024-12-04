@@ -1,31 +1,44 @@
 import 'dart:convert';
 
 class WeatherData {
-  String name;
-  String main;
-  String icon;
-  double temp;
+  final String name;
+  final String main;
+  final double temp;
+  final String icon;
+  final double feelsLike; // Menambahkan feelsLike
+  final List<WeatherDescription> weather;
 
   WeatherData({
     required this.name,
-    required this.temp,
     required this.main,
+    required this.temp,
     required this.icon,
+    required this.feelsLike, // Inisialisasi feelsLike
+    required this.weather,
   });
 
-  // Factory method untuk mendeserialisasi JSON ke WeatherData
-  factory WeatherData.fromJson(Map<String, dynamic> json) {
+  // Fungsi deserialization untuk menerima JSON dari API
+  factory WeatherData.deserialize(String jsonStr) {
+    final Map<String, dynamic> json = jsonDecode(jsonStr);
     return WeatherData(
-      name: json['name'] ?? '',
-      temp: (json['main']['temp'] as num).toDouble(),
-      main: json['weather'][0]['main'] ?? '',
-      icon: json['weather'][0]['icon'] ?? '',
+      name: json['name'],
+      main: json['weather'][0]['main'],
+      temp: json['main']['temp'],
+      icon: json['weather'][0]['icon'],
+      feelsLike: json['main']['feels_like'], // Menambahkan feelsLike
+      weather: (json['weather'] as List)
+          .map((e) => WeatherDescription.fromJson(e))
+          .toList(),
     );
   }
+}
 
-  // Method untuk mendeserialisasi dari string JSON
-  static WeatherData deserialize(String jsonString) {
-    final Map<String, dynamic> jsonMap = jsonDecode(jsonString);
-    return WeatherData.fromJson(jsonMap);
+class WeatherDescription {
+  final String main;
+
+  WeatherDescription({required this.main});
+
+  factory WeatherDescription.fromJson(Map<String, dynamic> json) {
+    return WeatherDescription(main: json['main']);
   }
 }

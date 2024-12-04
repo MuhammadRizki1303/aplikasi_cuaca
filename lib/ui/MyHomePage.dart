@@ -3,6 +3,7 @@ import 'package:aplikasi_cuaca/api/MapApi.dart';
 import 'package:aplikasi_cuaca/ui/Weather.dart';
 import 'package:aplikasi_cuaca/modal/WeatherData.dart';
 import 'package:geolocator/geolocator.dart';
+import 'dart:async';
 
 class MyHomePage extends StatefulWidget {
   final String title;
@@ -15,28 +16,61 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   WeatherData? _weatherData;
+  late List<Color> _gradientColors;
+  late int _currentIndex;
 
   @override
   void initState() {
     super.initState();
+    _gradientColors = [
+      Colors.blue[600]!, // Biru
+      Colors.white, // Putih
+      Colors.orange[600]!, // Oranye
+    ];
+    _currentIndex = 0;
+    _startGradientAnimation();
     getCurrentLocation();
+  }
+
+  // Fungsi untuk memulai animasi warna gradien
+  void _startGradientAnimation() {
+    Timer.periodic(Duration(seconds: 3), (timer) {
+      setState(() {
+        _currentIndex = (_currentIndex + 1) % _gradientColors.length;
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: _weatherData != null
-          ? Weather(weatherData: _weatherData!)
-          : Center(
-              child: CircularProgressIndicator(
-                strokeWidth: 4.0,
-                valueColor: AlwaysStoppedAnimation(Colors.white),
+      body: AnimatedContainer(
+        duration: Duration(seconds: 3), // Durasi transisi warna
+        curve: Curves.easeInOut, // Kurva transisi
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              _gradientColors[_currentIndex],
+              _gradientColors[(_currentIndex + 1) % _gradientColors.length],
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: _weatherData != null
+            ? Weather(
+                weatherData:
+                    _weatherData!) // Menampilkan data cuaca jika tersedia
+            : Center(
+                child: CircularProgressIndicator(
+                  strokeWidth: 4.0,
+                  valueColor: AlwaysStoppedAnimation(Colors.white),
+                ),
               ),
-            ),
+      ),
     );
   }
 
@@ -44,7 +78,6 @@ class _MyHomePageState extends State<MyHomePage> {
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Cek apakah layanan lokasi diaktifkan
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -55,7 +88,6 @@ class _MyHomePageState extends State<MyHomePage> {
       return;
     }
 
-    // Cek izin lokasi
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
@@ -78,7 +110,6 @@ class _MyHomePageState extends State<MyHomePage> {
       return;
     }
 
-    // Ambil lokasi saat ini
     Position location = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
