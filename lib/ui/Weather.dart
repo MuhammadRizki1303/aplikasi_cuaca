@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:aplikasi_cuaca/modal/WeatherData.dart';
+import 'about_page.dart';
+import 'rating_page.dart';
 
 class Weather extends StatelessWidget {
   final WeatherData weatherData;
@@ -9,82 +11,152 @@ class Weather extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Format untuk menampilkan tanggal
-    Widget dateSection = Container(
-      padding: EdgeInsets.only(top: 40.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            weatherData.name, // Nama kota
-            style: TextStyle(
-              fontSize: 28.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Cuaca Saat Ini'),
+        backgroundColor: Colors.blue.shade800,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue.shade800,
+              ),
+              child: Text(
+                'Menu Navigasi',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24.0,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.info_outline),
+              title: Text('Tentang Kami'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AboutPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.star_border),
+              title: Text('Penilaian Aplikasi'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RatingPage()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(20.0),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Colors.orange.shade400, // Pagi (Oranye)
+                Colors.blue.shade600, // Siang (Biru)
+                Colors.blue.shade900, // Sore (Biru Gelap)
+              ],
             ),
           ),
-          Text(
-            DateFormat('EEEE, d MMMM yyyy', 'id_ID')
-                .format(DateTime.now()), // Menggunakan format tanggal Indonesia
-            style: TextStyle(
-              fontSize: 16.0,
-              color: Colors.white,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              _buildDateSection(),
+              _buildTempSection(),
+              _buildFeelsLikeSection(),
+              _buildHourlyForecastSection(),
+              _buildWeeklyForecastSection(),
+            ],
           ),
-        ],
+        ),
       ),
     );
+  }
 
-    // Menampilkan suhu dengan besar dan ikon cuaca
-    Widget tempSection = Container(
-      padding: const EdgeInsets.symmetric(vertical: 30.0),
-      child: Column(
-        children: <Widget>[
-          Text(
-            '${weatherData.temp.toStringAsFixed(0)}°C', // Suhu saat ini
-            style: TextStyle(
-              fontSize: 80.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+  /// Widget untuk menampilkan tanggal dan lokasi
+  Widget _buildDateSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          weatherData.name, // Nama kota
+          style: TextStyle(
+            fontSize: 28.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
-          SizedBox(height: 10.0),
-          Image.network(
-            'http://openweathermap.org/img/wn/${weatherData.icon}.png',
-            width: 80.0,
-            height: 80.0,
-            fit: BoxFit.cover,
+        ),
+        Text(
+          DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(DateTime.now()),
+          style: TextStyle(
+            fontSize: 16.0,
+            color: Colors.white,
           ),
-          SizedBox(height: 10.0),
-          Text(
-            weatherData.main, // Menampilkan jenis cuaca (Rain, Cloudy, etc.)
-            style: TextStyle(
-              fontSize: 24.0,
-              color: Colors.white,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
+  }
 
-    // Menampilkan suhu yang dirasakan (Feels Like)
-    Widget feelsLikeSection = Container(
+  /// Widget untuk menampilkan suhu saat ini
+  Widget _buildTempSection() {
+    return Column(
+      children: <Widget>[
+        Text(
+          '${weatherData.temp.toStringAsFixed(0)}°C',
+          style: TextStyle(
+            fontSize: 80.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        Image.network(
+          'http://openweathermap.org/img/wn/${weatherData.icon}.png',
+          width: 80.0,
+          height: 80.0,
+          fit: BoxFit.cover,
+        ),
+        Text(
+          weatherData.main, // Jenis cuaca
+          style: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Widget untuk menampilkan suhu yang dirasakan
+  Widget _buildFeelsLikeSection() {
+    return Padding(
       padding: const EdgeInsets.only(top: 10.0),
       child: Text(
-        'Terasa seperti ${weatherData.feelsLike.toStringAsFixed(0)}°C', // Mengubah ke Bahasa Indonesia
+        'Terasa seperti ${weatherData.feelsLike.toStringAsFixed(0)}°C',
         style: TextStyle(
           fontSize: 18.0,
           color: Colors.white,
         ),
       ),
     );
+  }
 
-    // Bagian cuaca per jam (Timeline cuaca)
-    Widget hourlyForecastSection = Container(
+  /// Widget untuk menampilkan prakiraan cuaca per jam
+  Widget _buildHourlyForecastSection() {
+    return Container(
       padding: EdgeInsets.symmetric(vertical: 20.0),
       child: SingleChildScrollView(
-        // Membuat cuaca per jam bisa digulir
         scrollDirection: Axis.horizontal,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -98,12 +170,14 @@ class Weather extends StatelessWidget {
         ),
       ),
     );
+  }
 
-    // Bagian proyeksi cuaca 7 hari menggunakan Card
-    Widget weeklyForecastSection = Container(
+  /// Widget untuk menampilkan prakiraan cuaca mingguan
+  Widget _buildWeeklyForecastSection() {
+    return Container(
       padding: EdgeInsets.symmetric(vertical: 20.0),
       child: Column(
-        children: <Widget>[
+        children: [
           Text(
             'Cuaca Minggu Ini',
             style: TextStyle(
@@ -113,45 +187,30 @@ class Weather extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10.0),
-          _buildDailyForecastCard('Kamis', '28°C', 'Berawan'),
-          _buildDailyForecastCard('Jumat', '27°C', 'Hujan'),
-          _buildDailyForecastCard('Sabtu', '30°C', 'Cerah'),
-          _buildDailyForecastCard('Minggu', '22°C', 'Berawan'),
-        ],
-      ),
-    );
-
-    return SingleChildScrollView(
-      // Membungkus seluruh widget agar bisa digulir
-      child: Container(
-        padding: EdgeInsets.all(20.0),
-        decoration: BoxDecoration(
-          // Menggunakan Gradien untuk background
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Colors.orange.shade400, // Pagi (Oranye)
-              Colors.blue.shade600, // Siang (Biru)
-              Colors.blue.shade900, // Sore (Biru gelap)
-            ],
+          GridView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10.0,
+              crossAxisSpacing: 10.0,
+              childAspectRatio: 3,
+            ),
+            itemCount: 4,
+            itemBuilder: (context, index) {
+              return _buildDailyForecastCard(
+                ['Kamis', 'Jumat', 'Sabtu', 'Minggu'][index],
+                '${28 + index}°C',
+                ['Berawan', 'Hujan', 'Cerah', 'Berawan'][index],
+              );
+            },
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            dateSection,
-            tempSection,
-            feelsLikeSection,
-            hourlyForecastSection,
-            weeklyForecastSection,
-          ],
-        ),
+        ],
       ),
     );
   }
 
-  // Widget untuk forecast per jam
+  /// Widget untuk prakiraan per jam
   Widget _buildHourlyForecast(String time, String temp, String weather) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -186,11 +245,11 @@ class Weather extends StatelessWidget {
     );
   }
 
-  // Widget untuk forecast per hari menggunakan Card
+  /// Widget untuk kartu prakiraan harian
   Widget _buildDailyForecastCard(String day, String temp, String weather) {
     return Card(
       color: Colors.blue[800],
-      margin: EdgeInsets.symmetric(vertical: 5.0),
+      margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
@@ -218,7 +277,7 @@ class Weather extends StatelessWidget {
                 SizedBox(width: 10.0),
                 Icon(
                   Icons.wb_sunny,
-                  color: Colors.white,
+                  color: Colors.yellow,
                   size: 24.0,
                 ),
               ],
