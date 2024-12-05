@@ -12,6 +12,28 @@ Tata cara mengpush dan komen untuk project ini :
 - git commit -m "komentar anda disini kawanku"
 - git push
 
+Tata cara membuat branch
+
+- git branch <nama branch kalian>
+
+pindah branch
+
+- git checkout <nama branch kalia>
+
+melihat branch yang ada
+
+- git branch
+
+melihat branch yang ada direpository
+
+- git branch -r
+
+cara mengepush menggunakan branch
+
+- git add .
+- git commit -m "komentar kawanku sekalian disini"
+- git push origin <nama branch kalian> / git push <nama branch kalian>
+
 Depidensi yang diperlukan untuk para anggota saya :
 
 dependencies:
