@@ -25,7 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _gradientColors = [
       Colors.blue[600]!, // Biru
       Colors.white, // Putih
-      Colors.orange[600]!, // Oranye
+      const Color.fromARGB(255, 251, 140, 0), // Oranye
     ];
     _currentIndex = 0;
     _startGradientAnimation();
