@@ -103,6 +103,7 @@ Halaman rating page dirancang untuk mengumpulkan umpan balik pengguna dan menila
 
 -TRI KUMALA SARI
 (about_page)
+
 ![image](https://github.com/user-attachments/assets/d8c70a1d-edec-47ea-ab98-c02b27e0efc0)
 
 ![image](https://github.com/user-attachments/assets/258bd74f-af6e-484b-9e2c-386633fc1d63)
@@ -127,4 +128,4 @@ Desain Halaman
 7. ElevatedButton : Bila ditekan, ia memanggil _searchWeathermetode.
 8. Tampilan Info Cuaca : Menampilkan informasi cuaca yang tersimpan di _weatherInfo.
 
-AboutPage adalah halaman Flutter sederhana yang memungkinkan pengguna memasukkan lokasi dan mengambil informasi cuaca yang disimulasikan. Halaman ini secara efektif menggunakan manajemen status untuk memperbarui UI berdasarkan masukan pengguna. Tata letaknya diatur dan ditata menggunakan komponen Material Design Flutter.
+  AboutPage adalah halaman Flutter sederhana yang memungkinkan pengguna memasukkan lokasi dan mengambil informasi cuaca yang disimulasikan. Halaman ini secara efektif menggunakan manajemen status untuk memperbarui UI berdasarkan masukan pengguna. Tata letaknya diatur dan ditata menggunakan komponen Material Design Flutter.
