@@ -99,11 +99,28 @@ Deskripsi dari halaman Penilaian Aplikasi (rating_page)
 
 Halaman rating page dirancang untuk mengumpulkan umpan balik pengguna dan menilai kinerja aplikasi melalui penilaian bintang. Data ini membantu pengembang memahami pengalaman pengguna, mengidentifikasi kekurangan, dan melakukan perbaikan untuk meningkatkan kualitas aplikasi sesuai kebutuhan pengguna. Desainnya yang sederhana dan ramah mendorong partisipasi pengguna dengan mudah. Dengan memberikan ruang untuk menyampaikan pendapat, halaman ini menciptakan pengalaman positif yang memperkuat kepuasan dan loyalitas pengguna, sekaligus membangun citra aplikasi yang peduli terhadap masukan mereka.
 
+-TRI KUMALA SARI
+(about_page)
+![image](https://github.com/user-attachments/assets/d8c70a1d-edec-47ea-ab98-c02b27e0efc0)
+![image](https://github.com/user-attachments/assets/258bd74f-af6e-484b-9e2c-386633fc1d63)
+![image](https://github.com/user-attachments/assets/3ce0aa1c-7ab5-4981-ab07-e4d52fd34316)
 
-    
+Tentang Halaman "Tentang Kami" pada Aplikasi Cuaca
+Halaman Tentang Kami dalam aplikasi ini dirancang untuk memberikan informasi kepada pengguna mengenai latar belakang aplikasi, tujuan pengembangannya, serta fitur unggulan yang ditawarkan. Berikut adalah detail tampilannya:
+Desain Halaman
 
+-AboutPage adalah StatefulWidget, yang artinya ia dapat menyimpan status yang dapat berubah selama siklus hidup widget.
+-Metode ini createStatemembuat contoh _AboutPageState, yang berisi logika dan UI untuk halaman ini.
+-Metode ini dipanggil saat pengguna menekan tombol untuk mencari cuaca.
+-Pembaruan dilakukan _weatherInfodengan string yang menyertakan teks yang dimasukkan dalam kolom teks, yang mensimulasikan respons cuaca. setStatePanggilan tersebut memicu pembuatan ulang UI untuk mencerminkan status baru.
 
+1. Scaffold : Menyediakan struktur untuk antarmuka visual, termasuk AppBar dan badan.
+2. AppBar : Menampilkan judul "Tentang Kami" dengan warna latar belakang tertentu.
+3. Padding : Menambahkan padding di sekitar konten utama halaman.
+4. Kolom : Menyusun anak-anaknya secara vertikal.
+5. Widget Teks : Menampilkan informasi statis tentang aplikasi dan perintah untuk pengguna.
+6. TextField : Memungkinkan pengguna memasukkan nama wilayah untuk memeriksa cuaca.
+7. ElevatedButton : Bila ditekan, ia memanggil _searchWeathermetode.
+8. Tampilan Info Cuaca : Menampilkan informasi cuaca yang tersimpan di _weatherInfo.
 
-
-
-
+AboutPage adalah halaman Flutter sederhana yang memungkinkan pengguna memasukkan lokasi dan mengambil informasi cuaca yang disimulasikan. Halaman ini secara efektif menggunakan manajemen status untuk memperbarui UI berdasarkan masukan pengguna. Tata letaknya diatur dan ditata menggunakan komponen Material Design Flutter.
