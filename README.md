@@ -71,6 +71,39 @@ Informasi Tambahan
   Suhu: 84°F
   Kondisi: "Mostly cloudy"
 
+  - CUT RAYSHA
+    (rating_page)
+    ![image](https://github.com/user-attachments/assets/681b0ae5-ac5e-4445-83ec-b8d7415f41f1)
+    ![image](https://github.com/user-attachments/assets/5f763733-ff16-4baa-87bf-386d3c9dfda1)
+    
+    setelah pemberian rating
+    ![image](https://github.com/user-attachments/assets/a9d24b26-a4da-4af5-926a-eb927f167389)
+    
+Deskripsi dari halaman Penilaian Aplikasi (rating_page)
+1. Judul Halaman
+   - "Penilaian Aplikasi" ditampilkan di bagian atas halaman, menunjukkan bahwa halaman ini bertujuan untuk meminta umpan balik dari pengguna.
+2. Ikon Bintang
+   - Ikon bintang berwarna kuning di tengah atas menunjukkan tema penilaian (rating).
+3. Teks Penjelasan
+   - Teks di bawah judul menyebutkan: *"Kami sangat menghargai masukan dan penilaian Anda untuk membantu kami meningkatkan aplikasi ini."* Hal ini menunjukkan ajakan kepada pengguna untuk memberikan penilaian guna pengembangan aplikasi.
+4. Rating Bintang
+   - Lima bintang berwarna kuning memungkinkan pengguna untuk memberi penilaian dengan skala 1 hingga 5.
+5. Simbol dan Keterangan
+   - Ikon wajah tersenyum (emoji) dengan label "Sangat Puas" mencerminkan tingkat kepuasan pengguna.
+6. Tombol Kirim
+   - Tombol biru bertuliskan "Kirim Penilaian" digunakan untuk mengirimkan umpan balik pengguna.
+7. Catatan Tambahan
+   - Di bagian bawah, terdapat teks kecil bertuliskan: *"Terima kasih atas masukan Anda!"* yang berfungsi sebagai ucapan terima kasih setelah penilaian diberikan.
+8. Desain Visual
+   - Latar belakang menggunakan gradasi biru muda dengan ilustrasi elemen matahari dan awan, menciptakan kesan ramah dan ceria.
+
+Halaman rating page dirancang untuk mengumpulkan umpan balik pengguna dan menilai kinerja aplikasi melalui penilaian bintang. Data ini membantu pengembang memahami pengalaman pengguna, mengidentifikasi kekurangan, dan melakukan perbaikan untuk meningkatkan kualitas aplikasi sesuai kebutuhan pengguna. Desainnya yang sederhana dan ramah mendorong partisipasi pengguna dengan mudah. Dengan memberikan ruang untuk menyampaikan pendapat, halaman ini menciptakan pengalaman positif yang memperkuat kepuasan dan loyalitas pengguna, sekaligus membangun citra aplikasi yang peduli terhadap masukan mereka.
+
+
+    
+
+
+
 
 
 
