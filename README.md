@@ -99,10 +99,14 @@ Deskripsi dari halaman Penilaian Aplikasi (rating_page)
 
 Halaman rating page dirancang untuk mengumpulkan umpan balik pengguna dan menilai kinerja aplikasi melalui penilaian bintang. Data ini membantu pengembang memahami pengalaman pengguna, mengidentifikasi kekurangan, dan melakukan perbaikan untuk meningkatkan kualitas aplikasi sesuai kebutuhan pengguna. Desainnya yang sederhana dan ramah mendorong partisipasi pengguna dengan mudah. Dengan memberikan ruang untuk menyampaikan pendapat, halaman ini menciptakan pengalaman positif yang memperkuat kepuasan dan loyalitas pengguna, sekaligus membangun citra aplikasi yang peduli terhadap masukan mereka.
 
+
+
 -TRI KUMALA SARI
 (about_page)
 ![image](https://github.com/user-attachments/assets/d8c70a1d-edec-47ea-ab98-c02b27e0efc0)
+
 ![image](https://github.com/user-attachments/assets/258bd74f-af6e-484b-9e2c-386633fc1d63)
+
 ![image](https://github.com/user-attachments/assets/3ce0aa1c-7ab5-4981-ab07-e4d52fd34316)
 
 Tentang Halaman "Tentang Kami" pada Aplikasi Cuaca
