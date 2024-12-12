@@ -1,37 +1,45 @@
 import 'dart:convert';
 
+import 'dart:convert';
+
 class WeatherData {
   final String name;
-  final String main;
   final double temp;
   final String icon;
-  final double feelsLike; // Menambahkan feelsLike
-  final List<WeatherDescription> weather;
+  final String main;
+  final double feelsLike;
+  final double humidity;
+  final double windSpeed;
+  final double pressure;
 
   WeatherData({
     required this.name,
-    required this.main,
     required this.temp,
     required this.icon,
-    required this.feelsLike, // Inisialisasi feelsLike
-    required this.weather,
+    required this.main,
+    required this.feelsLike,
+    required this.humidity,
+    required this.windSpeed,
+    required this.pressure,
   });
 
-  // Fungsi deserialization untuk menerima JSON dari API
-  factory WeatherData.deserialize(String jsonStr) {
-    final Map<String, dynamic> json = jsonDecode(jsonStr);
+  // Fungsi deserialize
+  factory WeatherData.deserialize(String jsonString) {
+    final Map<String, dynamic> json = jsonDecode(jsonString);
+
     return WeatherData(
-      name: json['name'],
-      main: json['weather'][0]['main'],
-      temp: json['main']['temp'],
-      icon: json['weather'][0]['icon'],
-      feelsLike: json['main']['feels_like'], // Menambahkan feelsLike
-      weather: (json['weather'] as List)
-          .map((e) => WeatherDescription.fromJson(e))
-          .toList(),
+      name: json['name'] ?? '',
+      temp: (json['main']['temp'] ?? 0).toDouble(),
+      icon: json['weather'][0]['icon'] ?? '',
+      main: json['weather'][0]['main'] ?? '',
+      feelsLike: (json['main']['feels_like'] ?? 0).toDouble(),
+      humidity: (json['main']['humidity'] ?? 0).toDouble(),
+      windSpeed: (json['wind']['speed'] ?? 0).toDouble(),
+      pressure: (json['main']['pressure'] ?? 0).toDouble(),
     );
   }
 }
+
 
 class WeatherDescription {
   final String main;
