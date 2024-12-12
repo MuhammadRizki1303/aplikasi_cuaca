@@ -2,6 +2,13 @@
 
 Flutter project Cuaca.
 
+Ketua : MUhammad Rizki
+anggota: M. Akbar Zulfikar
+         Taufik Muhaimin
+         Cut Raysha
+         Aura Syaskia
+         Tri Kumala Sari 
+         
 Tata cara ngeclone project ini untuk para anggota saya :
 
 - git clone https://github.com/MuhammadRizki1303/aplikasi_cuaca_klmpk_3.git
