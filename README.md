@@ -4,11 +4,11 @@ Flutter project Cuaca.
 
 Ketua : MUhammad Rizki
 anggota: M. Akbar Zulfikar
-         Taufik Muhaimin
-         Cut Raysha
-         Aura Syaskia
-         Tri Kumala Sari 
-         
+Taufik Muhaimin
+Cut Raysha
+Aura Syaskia
+Tri Kumala Sari
+
 Tata cara ngeclone project ini untuk para anggota saya :
 
 - git clone https://github.com/MuhammadRizki1303/aplikasi_cuaca_klmpk_3.git
@@ -55,10 +55,10 @@ cupertino_icons: ^1.0.8
 
   - pertama pembuatan struktur project
   - pembuatan ui beserta lainnya seperti navbar dan page rating dan page about us default
-    ![alt text](image.png)
-    ![alt text](image-1.png)
-    ![alt text](image-2.png)
-    ![alt text](image-3.png)
+    ![Gambar 4](images/image.png)
+    ![Gambar 1](images/image-1.png)
+    ![Gambar 2](images/image-2.png)
+    ![Gambar 3](images/image-3.png)
 
 - AURA SYASKIA
 - (about_page)
