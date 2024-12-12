@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class RatingPage extends StatefulWidget {
+  const RatingPage({super.key});
+
   @override
   _RatingPageState createState() => _RatingPageState();
 }
@@ -30,7 +32,7 @@ class _RatingPageState extends State<RatingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Penilaian Aplikasi'),
+        title: const Text('Penilaian Aplikasi'),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -74,16 +76,16 @@ class _RatingPageState extends State<RatingPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SizedBox(height: kToolbarHeight + 20.0),
+                  const SizedBox(height: kToolbarHeight + 20.0),
                   Center(
                     child: Column(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.star_rate_rounded,
-                          color: const Color.fromARGB(255, 255, 242, 3),
+                          color: Color.fromARGB(255, 255, 242, 3),
                           size: 100.0,
                         ),
-                        SizedBox(height: 10.0),
+                        const SizedBox(height: 10.0),
                         Text(
                           'Beri Penilaian',
                           style: TextStyle(
@@ -95,7 +97,7 @@ class _RatingPageState extends State<RatingPage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Text(
                     'Kami sangat menghargai masukan dan penilaian Anda untuk membantu kami meningkatkan aplikasi ini.',
                     style: TextStyle(
@@ -104,7 +106,7 @@ class _RatingPageState extends State<RatingPage> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 40.0),
+                  const SizedBox(height: 40.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(5, (index) {
@@ -124,7 +126,7 @@ class _RatingPageState extends State<RatingPage> {
                       );
                     }),
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   if (_selectedRating > 0) ...[
                     Column(
                       children: [
@@ -133,7 +135,7 @@ class _RatingPageState extends State<RatingPage> {
                           color: Colors.blue.shade900,
                           size: 80.0,
                         ),
-                        SizedBox(height: 10.0),
+                        const SizedBox(height: 10.0),
                         Text(
                           getFeedbackText(),
                           style: TextStyle(
@@ -145,42 +147,42 @@ class _RatingPageState extends State<RatingPage> {
                       ],
                     ),
                   ],
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   ElevatedButton(
                     onPressed: () {
                       if (_selectedRating == 0) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
+                          const SnackBar(
                             content: Text(
                                 'Silakan pilih jumlah bintang terlebih dahulu.'),
                             backgroundColor:
-                                const Color.fromARGB(255, 255, 17, 0),
+                                Color.fromARGB(255, 255, 17, 0),
                           ),
                         );
                       } else {
                         _showConfirmationDialog(context);
                       }
                     },
-                    child: Text(
-                      'Kirim Penilaian',
-                      style: TextStyle(fontSize: 18.0),
-                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue.shade800,
                       foregroundColor: Colors.white,
-                      padding: EdgeInsets.symmetric(vertical: 12.0),
+                      padding: const EdgeInsets.symmetric(vertical: 12.0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
+                    child: Text(
+                      'Kirim Penilaian',
+                      style: TextStyle(fontSize: 18.0),
+                    ),
                   ),
-                  SizedBox(height: 20.0),
-                  Center(
+                  const SizedBox(height: 20.0),
+                  const Center(
                     child: Text(
                       'Terima kasih atas masukan Anda!',
                       style: TextStyle(
                         fontSize: 14.0,
-                        color: const Color.fromARGB(255, 87, 84, 84),
+                        color: Color.fromARGB(255, 87, 84, 84),
                         fontStyle: FontStyle.italic,
                       ),
                     ),
@@ -199,7 +201,7 @@ class _RatingPageState extends State<RatingPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Konfirmasi Penilaian'),
+          title: const Text('Konfirmasi Penilaian'),
           content: Text(
             'Anda memberikan penilaian $_selectedRating bintang. Apakah Anda yakin?',
           ),
@@ -208,13 +210,13 @@ class _RatingPageState extends State<RatingPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Batal'),
+              child: const Text('Batal'),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
+                  const SnackBar(
                     content: Text('Terima kasih atas penilaian Anda!'),
                     backgroundColor: Colors.green,
                   ),
@@ -223,7 +225,7 @@ class _RatingPageState extends State<RatingPage> {
                   _selectedRating = 0;
                 });
               },
-              child: Text('Kirim'),
+              child: const Text('Kirim'),
             ),
           ],
         );

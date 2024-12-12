@@ -43,6 +43,16 @@ geolocator: ^10.0.1
 intl: ^0.18.0
 http: ^1.2.2
 cupertino_icons: ^1.0.8
+
+- Muhammad Rizki
+
+  - pertama pembuatan struktur project
+  - pembuatan ui beserta lainnya seperti navbar dan page rating dan page about us default
+    ![alt text](image.png)
+    ![alt text](image-1.png)
+    ![alt text](image-2.png)
+    ![alt text](image-3.png)
+
 - AURA SYASKIA
 - (about_page)
   ![Screenshot 2024-12-11 175433](https://github.com/user-attachments/assets/c195c401-6fae-4f74-b7e4-3864dbb88259)
@@ -52,40 +62,33 @@ cupertino_icons: ^1.0.8
 Tentang Halaman "Tentang Kami" pada Aplikasi Cuaca
 Halaman Tentang Kami dalam aplikasi ini dirancang untuk memberikan informasi kepada pengguna mengenai latar belakang aplikasi, tujuan pengembangannya, serta fitur unggulan yang ditawarkan. Berikut adalah detail tampilannya:
 Desain Halaman
+
 1. Header:
    Menampilkan nama aplikasi, yaitu "Aplikasi Cuaca", serta slogan "Menyediakan Prakiraan Cuaca Akurat untuk Hidup Lebih Terencana".
 2. Sub-bagian "Siapa Kami?":
-   Menjelaskan bahwa aplikasi ini dikembangkan oleh tim yang fokus menyediakan informasi cuaca terkini berbasis teknologi modern untuk membantu pengguna mempersiapkan diri      menghadapi berbagai kondisi cuaca.
+   Menjelaskan bahwa aplikasi ini dikembangkan oleh tim yang fokus menyediakan informasi cuaca terkini berbasis teknologi modern untuk membantu pengguna mempersiapkan diri menghadapi berbagai kondisi cuaca.
 3. Sub-bagian "Keunggulan Kami"
    Data Akurat: Informasi cuaca yang bersumber dari data terpercaya dan diperbarui secara real-time.
    Antarmuka Mudah: Desain sederhana dan elegan untuk mempermudah pengguna dalam mengakses informasi.
    Notifikasi Penting: Memberikan notifikasi langsung terkait kondisi cuaca buruk atau ekstrem.
    Prakiraan Hujan: Menyediakan detail kemungkinan hujan dengan tingkat akurasi tinggi.
-   
-Elemen Visual
-  Ikon Representatif: Ikon digunakan untuk memperkuat setiap poin fitur, seperti matahari untuk data akurat, awan untuk antarmuka mudah, dan lainnya.
-  Warna Latar: Didominasi oleh warna biru untuk menciptakan kesan profesional dan relevan dengan tema cuaca.
 
-Informasi Tambahan
-  Pada bagian bawah layar, terdapat tampilan prakiraan cuaca terkini berupa:
-  Suhu: 84°F
-  Kondisi: "Mostly cloudy"
+- CUT RAYSHA
+  (rating_page)
+  ![image](https://github.com/user-attachments/assets/681b0ae5-ac5e-4445-83ec-b8d7415f41f1)
+  ![image](https://github.com/user-attachments/assets/5f763733-ff16-4baa-87bf-386d3c9dfda1)
 
-  - CUT RAYSHA
-    (rating_page)
-    ![image](https://github.com/user-attachments/assets/681b0ae5-ac5e-4445-83ec-b8d7415f41f1)
-    ![image](https://github.com/user-attachments/assets/5f763733-ff16-4baa-87bf-386d3c9dfda1)
-    
-    setelah pemberian rating
-    ![image](https://github.com/user-attachments/assets/a9d24b26-a4da-4af5-926a-eb927f167389)
-    
+  setelah pemberian rating
+  ![image](https://github.com/user-attachments/assets/a9d24b26-a4da-4af5-926a-eb927f167389)
+
 Deskripsi dari halaman Penilaian Aplikasi (rating_page)
+
 1. Judul Halaman
    - "Penilaian Aplikasi" ditampilkan di bagian atas halaman, menunjukkan bahwa halaman ini bertujuan untuk meminta umpan balik dari pengguna.
 2. Ikon Bintang
    - Ikon bintang berwarna kuning di tengah atas menunjukkan tema penilaian (rating).
 3. Teks Penjelasan
-   - Teks di bawah judul menyebutkan: *"Kami sangat menghargai masukan dan penilaian Anda untuk membantu kami meningkatkan aplikasi ini."* Hal ini menunjukkan ajakan kepada pengguna untuk memberikan penilaian guna pengembangan aplikasi.
+   - Teks di bawah judul menyebutkan: _"Kami sangat menghargai masukan dan penilaian Anda untuk membantu kami meningkatkan aplikasi ini."_ Hal ini menunjukkan ajakan kepada pengguna untuk memberikan penilaian guna pengembangan aplikasi.
 4. Rating Bintang
    - Lima bintang berwarna kuning memungkinkan pengguna untuk memberi penilaian dengan skala 1 hingga 5.
 5. Simbol dan Keterangan
@@ -93,13 +96,11 @@ Deskripsi dari halaman Penilaian Aplikasi (rating_page)
 6. Tombol Kirim
    - Tombol biru bertuliskan "Kirim Penilaian" digunakan untuk mengirimkan umpan balik pengguna.
 7. Catatan Tambahan
-   - Di bagian bawah, terdapat teks kecil bertuliskan: *"Terima kasih atas masukan Anda!"* yang berfungsi sebagai ucapan terima kasih setelah penilaian diberikan.
+   - Di bagian bawah, terdapat teks kecil bertuliskan: _"Terima kasih atas masukan Anda!"_ yang berfungsi sebagai ucapan terima kasih setelah penilaian diberikan.
 8. Desain Visual
    - Latar belakang menggunakan gradasi biru muda dengan ilustrasi elemen matahari dan awan, menciptakan kesan ramah dan ceria.
 
 Halaman rating page dirancang untuk mengumpulkan umpan balik pengguna dan menilai kinerja aplikasi melalui penilaian bintang. Data ini membantu pengembang memahami pengalaman pengguna, mengidentifikasi kekurangan, dan melakukan perbaikan untuk meningkatkan kualitas aplikasi sesuai kebutuhan pengguna. Desainnya yang sederhana dan ramah mendorong partisipasi pengguna dengan mudah. Dengan memberikan ruang untuk menyampaikan pendapat, halaman ini menciptakan pengalaman positif yang memperkuat kepuasan dan loyalitas pengguna, sekaligus membangun citra aplikasi yang peduli terhadap masukan mereka.
-
-
 
 -TRI KUMALA SARI
 (about_page)
@@ -115,9 +116,9 @@ Halaman Tentang Kami dalam aplikasi ini dirancang untuk memberikan informasi kep
 Desain Halaman
 
 -AboutPage adalah StatefulWidget, yang artinya ia dapat menyimpan status yang dapat berubah selama siklus hidup widget.
--Metode ini createStatemembuat contoh _AboutPageState, yang berisi logika dan UI untuk halaman ini.
+-Metode ini createStatemembuat contoh \_AboutPageState, yang berisi logika dan UI untuk halaman ini.
 -Metode ini dipanggil saat pengguna menekan tombol untuk mencari cuaca.
--Pembaruan dilakukan _weatherInfodengan string yang menyertakan teks yang dimasukkan dalam kolom teks, yang mensimulasikan respons cuaca. setStatePanggilan tersebut memicu pembuatan ulang UI untuk mencerminkan status baru.
+-Pembaruan dilakukan \_weatherInfodengan string yang menyertakan teks yang dimasukkan dalam kolom teks, yang mensimulasikan respons cuaca. setStatePanggilan tersebut memicu pembuatan ulang UI untuk mencerminkan status baru.
 
 1. Scaffold : Menyediakan struktur untuk antarmuka visual, termasuk AppBar dan badan.
 2. AppBar : Menampilkan judul "Tentang Kami" dengan warna latar belakang tertentu.
@@ -125,7 +126,5 @@ Desain Halaman
 4. Kolom : Menyusun anak-anaknya secara vertikal.
 5. Widget Teks : Menampilkan informasi statis tentang aplikasi dan perintah untuk pengguna.
 6. TextField : Memungkinkan pengguna memasukkan nama wilayah untuk memeriksa cuaca.
-7. ElevatedButton : Bila ditekan, ia memanggil _searchWeathermetode.
-8. Tampilan Info Cuaca : Menampilkan informasi cuaca yang tersimpan di _weatherInfo.
-
-  AboutPage adalah halaman Flutter sederhana yang memungkinkan pengguna memasukkan lokasi dan mengambil informasi cuaca yang disimulasikan. Halaman ini secara efektif menggunakan manajemen status untuk memperbarui UI berdasarkan masukan pengguna. Tata letaknya diatur dan ditata menggunakan komponen Material Design Flutter.
+7. ElevatedButton : Bila ditekan, ia memanggil \_searchWeathermetode.
+8. Tampilan Info Cuaca : Menampilkan informasi cuaca yang tersimpan di \_weatherInfo.

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatelessWidget {
+  const AboutPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tentang Kami'),
+        title: const Text('Tentang Kami'),
         backgroundColor: Colors.blue.shade800,
         elevation: 0,
       ),
@@ -24,7 +26,7 @@ class AboutPage extends StatelessWidget {
                 ),
               ),
               padding: const EdgeInsets.all(20.0),
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -47,7 +49,7 @@ class AboutPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             // Content Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -58,7 +60,7 @@ class AboutPage extends StatelessWidget {
                     title: 'Siapa Kami?',
                     icon: Icons.info_outline_rounded,
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   Text(
                     'Kami adalah tim pengembang aplikasi yang berfokus pada penyediaan informasi cuaca terkini. Dengan teknologi terkini, kami membantu pengguna untuk selalu siap menghadapi kondisi cuaca.',
                     style: TextStyle(
@@ -66,12 +68,12 @@ class AboutPage extends StatelessWidget {
                       color: Colors.grey.shade700,
                     ),
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   _buildSectionHeader(
                     title: 'Keunggulan Kami',
                     icon: Icons.star_rounded,
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   _buildFeature(
                     icon: Icons.sunny,
                     title: 'Data Akurat',
@@ -102,7 +104,7 @@ class AboutPage extends StatelessWidget {
                     description:
                         'Informasi lengkap suhu harian dan mingguan untuk persiapan lebih baik.',
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Center(
                     child: ElevatedButton(
                       onPressed: () {
@@ -110,7 +112,7 @@ class AboutPage extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue.shade800,
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           horizontal: 30.0,
                           vertical: 15.0,
                         ),
@@ -118,7 +120,7 @@ class AboutPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Pelajari Lebih Lanjut',
                         style: TextStyle(fontSize: 16.0),
                       ),
@@ -127,7 +129,7 @@ class AboutPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             // Footer Section
             Container(
               width: double.infinity,
@@ -161,7 +163,7 @@ class AboutPage extends StatelessWidget {
             size: 28.0,
             color: Colors.blue.shade800,
           ),
-          SizedBox(width: 10.0),
+          const SizedBox(width: 10.0),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -174,7 +176,7 @@ class AboutPage extends StatelessWidget {
                     color: Colors.blue.shade800,
                   ),
                 ),
-                SizedBox(height: 5.0),
+                const SizedBox(height: 5.0),
                 Text(
                   description,
                   style: TextStyle(fontSize: 14.0, color: Colors.grey.shade700),
@@ -191,7 +193,7 @@ class AboutPage extends StatelessWidget {
     return Row(
       children: [
         Icon(icon, size: 28.0, color: Colors.blue.shade800),
-        SizedBox(width: 10.0),
+        const SizedBox(width: 10.0),
         Text(
           title,
           style: TextStyle(

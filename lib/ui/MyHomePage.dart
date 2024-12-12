@@ -8,7 +8,7 @@ import 'dart:async';
 class MyHomePage extends StatefulWidget {
   final String title;
 
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({super.key, required this.title});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // Fungsi untuk memulai animasi warna gradien
   void _startGradientAnimation() {
-    Timer.periodic(Duration(seconds: 3), (timer) {
+    Timer.periodic(const Duration(seconds: 3), (timer) {
       setState(() {
         _currentIndex = (_currentIndex + 1) % _gradientColors.length;
       });
@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: AnimatedContainer(
-        duration: Duration(seconds: 3), // Durasi transisi warna
+        duration: const Duration(seconds: 3), // Durasi transisi warna
         curve: Curves.easeInOut, // Kurva transisi
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ? Weather(
                 weatherData:
                     _weatherData!) // Menampilkan data cuaca jika tersedia
-            : Center(
+            : const Center(
                 child: CircularProgressIndicator(
                   strokeWidth: 4.0,
                   valueColor: AlwaysStoppedAnimation(Colors.white),
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Layanan lokasi tidak aktif.'),
         ),
       );
@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Izin lokasi ditolak.'),
           ),
         );
@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (permission == LocationPermission.deniedForever) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Izin lokasi ditolak secara permanen.'),
         ),
       );
