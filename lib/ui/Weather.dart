@@ -12,196 +12,41 @@ class Weather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue.shade800,
       appBar: AppBar(
         title: const Text('Cuaca Saat Ini'),
-        backgroundColor: Colors.blue.shade800,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue.shade800,
-              ),
-              child: const Text(
-                'Menu Navigasi',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24.0,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.info_outline),
-              title: const Text('Tentang Kami'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AboutPage()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.star_border),
-              title: const Text('Penilaian Aplikasi'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RatingPage()),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(20.0),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Colors.orange.shade400, // Pagi (Oranye)
-                Colors.blue.shade600, // Siang (Biru)
-                Colors.blue.shade900, // Sore (Biru Gelap)
-              ],
-            ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _buildDateSection(),
-              _buildTempSection(),
-              _buildFeelsLikeSection(),
-              _buildHourlyForecastSection(),
-              _buildWeeklyForecastSection(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  /// Widget untuk menampilkan tanggal dan lokasi
-  Widget _buildDateSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          weatherData.name, // Nama kota
-          style: const TextStyle(
-            fontSize: 28.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        Text(
-          DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(DateTime.now()),
-          style: const TextStyle(
-            fontSize: 16.0,
-            color: Colors.white,
-          ),
-        ),
-      ],
-    );
-  }
-
-  /// Widget untuk menampilkan suhu saat ini
-  Widget _buildTempSection() {
-    return Column(
-      children: <Widget>[
-        Text(
-          '${weatherData.temp.toStringAsFixed(0)}°C',
-          style: const TextStyle(
-            fontSize: 80.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        Image.network(
-          'http://openweathermap.org/img/wn/${weatherData.icon}.png',
-          width: 80.0,
-          height: 80.0,
-          fit: BoxFit.cover,
-        ),
-        Text(
-          weatherData.main, // Jenis cuaca
-          style: const TextStyle(
-            fontSize: 24.0,
-            fontWeight: FontWeight.w500,
-            color: Colors.white,
-          ),
-        ),
-      ],
-    );
-  }
-
-  /// Widget untuk menampilkan suhu yang dirasakan
-  Widget _buildFeelsLikeSection() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
-      child: Text(
-        'Terasa seperti ${weatherData.feelsLike.toStringAsFixed(0)}°C',
-        style: const TextStyle(
-          fontSize: 18.0,
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-
-  /// Widget untuk menampilkan prakiraan cuaca per jam
-  Widget _buildHourlyForecastSection() {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20.0),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            _buildHourlyForecast('01:00', '28°C', 'Hujan'),
-            _buildHourlyForecast('02:00', '27°C', 'Berawan'),
-            _buildHourlyForecast('03:00', '26°C', 'Cerah'),
-            _buildHourlyForecast('04:00', '25°C', 'Cerah'),
-            _buildHourlyForecast('05:00', '24°C', 'Hujan'),
-          ],
-        ),
-      ),
-    );
-  }
-
-  /// Widget untuk menampilkan prakiraan cuaca mingguan
-  Widget _buildWeeklyForecastSection() {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20.0),
-      child: Column(
+      body: Stack(
         children: [
-          const Text(
-            'Cuaca Minggu Ini',
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-          const SizedBox(height: 10.0),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 10.0,
-              crossAxisSpacing: 10.0,
-              childAspectRatio: 3,
-            ),
-            itemCount: 4,
-            itemBuilder: (context, index) {
-              return _buildDailyForecastCard(
-                ['Kamis', 'Jumat', 'Sabtu', 'Minggu'][index],
-                '${28 + index}°C',
-                ['Berawan', 'Hujan', 'Cerah', 'Berawan'][index],
+          _buildHeaderSection(),
+          DraggableScrollableSheet(
+            initialChildSize: 0.35,
+            minChildSize: 0.35,
+            maxChildSize: 0.8,
+            builder: (context, scrollController) {
+              return Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(20.0),
+                  ),
+                ),
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildHourlyForecastSection(),
+                        const SizedBox(height: 20.0),
+                        _buildDetailsSection(),
+                      ],
+                    ),
+                  ),
+                ),
               );
             },
           ),
@@ -210,33 +55,65 @@ class Weather extends StatelessWidget {
     );
   }
 
-  /// Widget untuk prakiraan per jam
-  Widget _buildHourlyForecast(String time, String temp, String weather) {
+  Widget _buildHeaderSection() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      padding: const EdgeInsets.all(20.0),
       child: Column(
-        children: <Widget>[
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Text(
-            time,
+            weatherData.name,
             style: const TextStyle(
-              fontSize: 14.0,
-              color: Colors.white,
-            ),
-          ),
-          const SizedBox(height: 5.0),
-          Text(
-            temp,
-            style: const TextStyle(
-              fontSize: 16.0,
+              fontSize: 24.0,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
           ),
-          const SizedBox(height: 5.0),
           Text(
-            weather,
+            DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(DateTime.now()),
             style: const TextStyle(
-              fontSize: 14.0,
+              fontSize: 16.0,
+              color: Colors.white70,
+            ),
+          ),
+          const SizedBox(height: 20.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${weatherData.temp.toStringAsFixed(0)}°C',
+                    style: const TextStyle(
+                      fontSize: 80.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    weatherData.main,
+                    style: const TextStyle(
+                      fontSize: 24.0,
+                      color: Colors.white70,
+                    ),
+                  ),
+                ],
+              ),
+              Image.network(
+                'http://openweathermap.org/img/wn/${weatherData.icon}.png',
+                width: 100.0,
+                height: 100.0,
+                fit: BoxFit.cover,
+              ),
+            ],
+          ),
+          const SizedBox(height: 20.0),
+          Text(
+            '"Stay positive and enjoy the weather!"',
+            style: const TextStyle(
+              fontSize: 16.0,
+              fontStyle: FontStyle.italic,
               color: Colors.white70,
             ),
           ),
@@ -245,46 +122,100 @@ class Weather extends StatelessWidget {
     );
   }
 
-  /// Widget untuk kartu prakiraan harian
-  Widget _buildDailyForecastCard(String day, String temp, String weather) {
-    return Card(
-      color: Colors.blue[800],
-      margin: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
+  Widget _buildHourlyForecastSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Hourly Forecast',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 10.0),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              _buildHourlyForecastCard('05:00', '23°C', Icons.wb_sunny),
+              _buildHourlyForecastCard('06:00', '20°C', Icons.cloud),
+              _buildHourlyForecastCard('07:00', '17°C', Icons.cloud_queue),
+              _buildHourlyForecastCard('08:00', '16°C', Icons.cloud),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildHourlyForecastCard(String time, String temp, IconData icon) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Column(
+        children: [
+          Icon(icon, color: Colors.blue.shade800, size: 30.0),
+          const SizedBox(height: 5.0),
+          Text(
+            time,
+            style: const TextStyle(fontSize: 14.0),
+          ),
+          const SizedBox(height: 5.0),
+          Text(
+            temp,
+            style: const TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
+    );
+  }
+
+  Widget _buildDetailsSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Today’s Details',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 10.0),
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              day,
-              style: const TextStyle(
-                fontSize: 18.0,
-                color: Colors.white,
-              ),
-            ),
-            Row(
-              children: <Widget>[
-                Text(
-                  temp,
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(width: 10.0),
-                const Icon(
-                  Icons.wb_sunny,
-                  color: Colors.yellow,
-                  size: 24.0,
-                ),
-              ],
-            ),
+          children: [
+            _buildDetailItem('Humidity', '${weatherData.humidity}%'),
+            _buildDetailItem('Wind', '${weatherData.windSpeed} km/h'),
+            _buildDetailItem('Pressure', '${weatherData.pressure} hPa'),
           ],
         ),
-      ),
+      ],
+    );
+  }
+
+  Widget _buildDetailItem(String title, String value) {
+    return Column(
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 16.0,
+            color: Colors.grey,
+          ),
+        ),
+        const SizedBox(height: 5.0),
+        Text(
+          value,
+          style: const TextStyle(
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
     );
   }
 }
