@@ -18,13 +18,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false, // Menghilangkan banner debug
-      title: 'Aplikasi Cuaca',
+      title: 'ApCU (Aplikasi Cuaca)',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.lightBlueAccent, // Warna latar belakang
       ),
       home: MyHomePage(
-          title: 'Aplikasi Cuaca Saya'), // Menuju ke halaman MyHomePage
+          title: 'Aplikasi Cuaca Kelompok 3'), // Menuju ke halaman MyHomePage
     );
   }
 }

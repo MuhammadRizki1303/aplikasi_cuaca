@@ -51,14 +51,19 @@ intl: ^0.18.0
 http: ^1.2.2
 cupertino_icons: ^1.0.8
 
-- Muhammad Rizki
+# Muhammad Rizki
 
-  - pertama pembuatan struktur project
-  - pembuatan ui beserta lainnya seperti navbar dan page rating dan page about us default
-    ![Gambar 4](images/image.png)
-    ![Gambar 1](images/image-1.png)
-    ![Gambar 2](images/image-2.png)
-    ![Gambar 3](images/image-3.png)
+## Pembuatan Struktur Project
+
+- Pertama pembuatan struktur project
+- Pembuatan UI beserta lainnya seperti navbar dan page rating serta page about us default
+
+### Gambar Tampilan
+
+<img src="images/image-0.png" width="300" />
+<img src="images/image-1.png" width="300" />
+<img src="images/image-2.png" width="300" />
+<img src="images/image-3.png" width="300" />
 
 - AURA SYASKIA
 - (about_page)
